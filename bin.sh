@@ -6,6 +6,7 @@ echo "
 (_/\_)(____)\____/ \___)\__/ \_)(_/(____)
 "
 chmod +x script.sh
+echo "starting installation"
 sh ./script.sh
 echo "DONE INSTALLING REQUIREMENTS(Wait for 3 seconds to start)"
 sleep 1
