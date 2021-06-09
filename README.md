@@ -1,7 +1,7 @@
 # pyopengl
-## To install and run:
 ### Prerequisite
 * Python3
+## To install and run:
 1. Clone the repo
    ```sh
     git clone https://github.com/Namanskshetty/pyopengl.git
@@ -18,3 +18,6 @@
     ```sh
     python3 main.py
     ```
+<html><body>
+   <a href="https://github.com/Namanskshetty">repo</a>
+   </body></html>
