@@ -19,6 +19,6 @@
     python3 main.py
     ```
 <html><body>
-   <a href="https://github.com/Namanskshetty">Popular repositories</a><br>
-   <a href="https://www.labri.fr/perso/nrougier/python-opengl/#preface">Python and OpenGL text book</a>
+   <a href="https://github.com/Namanskshetty"  target="_blank">Popular repositories</a><br>
+   <a href="https://www.labri.fr/perso/nrougier/python-opengl/#preface"  target="_blank">Python and OpenGL text book</a>
    </body></html>
