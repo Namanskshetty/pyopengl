@@ -49,7 +49,7 @@ class Base(object):
       if self.input.quit:
         self.running=False
       ##update##
-      self.update
+      self.update()
 
       ## render ##
       #display image on screen
