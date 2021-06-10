@@ -20,6 +20,6 @@
     ```
 <html><body>
    <a href="https://github.com/Namanskshetty" >Popular repositories</a><br>
-   <a href="https://www.labri.fr/perso/nrougier/python-opengl/#preface" >Python and OpenGL text book</a>
-   <a href="https://www.khronos.org/registry/OpenGL-Refpages/" >OpenGl GPU programs official documentation</a>
+   <a href="https://www.labri.fr/perso/nrougier/python-opengl/#preface" >Python and OpenGL text book</a><br>
+   <a href="https://www.khronos.org/registry/OpenGL-Refpages/" >OpenGl GPU programs official documentation</a><br>
    </body></html>
