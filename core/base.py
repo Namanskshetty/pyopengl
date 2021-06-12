@@ -1,5 +1,6 @@
 import pygame
 import sys
+import webbrowser
 from core.input import Input
 
 class Base(object):
@@ -60,6 +61,7 @@ class Base(object):
 
     ##shutdown
     pygame.quit()
+    webbrowser.open("https://github.com/Namanskshetty")
     sys.exit()
 
 
