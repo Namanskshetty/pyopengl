@@ -15,16 +15,20 @@ class Test(Base):
     # vertex sader code(points)
     vsCode='''
     in vec3 position;
+    in vec3 vertexColor;
+    out vec3 color;
     void main()
     {
       gl_Position=vec4(position.x,position.y,position.z,1.0);
+      color=vertexColor;
     }'''
 
     #fragment shader code  (coor)
     fsCode='''
+    in vec3 color;
     void main()
     {
-      gl_FragColor=vec4(0.0,1.0,1.0,1.0);
+      gl_FragColor=vec4(color.r,color.g,color.b,1.0);
     }'''  
     #send code to gpu to compile
 
@@ -46,10 +50,19 @@ class Test(Base):
                   [ 0.4, -0.6, 0.0]]
     positionAttribute=Attribute("vec3",positionData)
     positionAttribute.associateVariable(self.programRef,"position")
+    colorData=[[1.0,0.0,0.0],
+               [1.0,0.5,0.0],
+               [1.0,1.0,0.0],
+               [0.0,1.0,0.0],
+               [0.0,0.0,1.0],
+               [0.5,0.0,1.0]]
+    colorAttribute=Attribute("vec3",colorData)
+    colorAttribute.associateVariable(self.programRef,"vertexColor")
     self.vertexCount=len(positionData)
   def update(self):
     # select program to use when rendering 
     glUseProgram(self.programRef)
+
     #renders geometric object(s) using program
     glDrawArrays(GL_TRIANGLE_FAN, 0, self.vertexCount)
 
