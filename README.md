@@ -18,7 +18,7 @@
     ```sh
     python3 main.py
     ```
-** check for daily updates
+** check for daily updates **
 ## Usefull liks:
 <html><body>
    <a href="https://github.com/Namanskshetty" >Popular repositories</a><br>
