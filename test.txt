@@ -1,0 +1,88 @@
+from core.base import Base
+from core.openGLUtlis import OpenGLUtlis
+from OpenGL.GL import *
+from core.attribute import Attribute
+from core.uniform import Uniform
+import time
+
+#render multiple triangles
+class Test(Base):
+  def initialize(self):
+    print("starting..!")
+
+    #create gpu program 
+
+    # vertex sader code(points)
+    vsCode='''
+    in vec3 position;
+    uniform vec3 translation;
+    void main()
+    {
+      vec3 pos = position + translation;
+      gl_Position=vec4(pos.x,pos.y,pos.z,1.0);
+    }'''
+
+    #fragment shader code 
+    fsCode='''
+    out vec4 fragColor;
+    void main()
+    {
+      fragColor=vec4(0.1,0.5,0.1,1.0);
+    }'''  
+    #send code to gpu to compile
+
+    self.programRef=OpenGLUtlis.initlizeProgram(vsCode, fsCode)
+    #vertx array object 
+
+    #set up VAOs(vertex array objects)
+    vaoRef= glGenVertexArrays(1)
+    glBindVertexArray(vaoRef)
+
+    #setup vertex Attribute
+    positionData=[[ 0.0,  0.2, 0.0],
+                  [ 0.2, -0.2, 0.0],
+                  [-0.2, -0.2, 0.0]]
+    positionAttribute=Attribute("vec3",positionData)
+    positionAttribute.associateVariable(self.programRef,"position")
+    self.vertexCount=len(positionData)
+    #render settings
+    glClearColor(0, 0.1, 0.1, 1)
+    #set up uniforms
+    self.translationUniform=Uniform("vec3",[0.0,0.0,0.0])
+    self.translationUniform.locateVariable(self.programRef,"translation")
+    self.time=0
+  def update(self):
+    self.time+=1/60
+    # select program to use when rendering 
+    glUseProgram(self.programRef)
+    glClear(GL_COLOR_BUFFER_BIT)#clear the if 
+    if self.input.isKeyUp("space"):
+      print("space")
+      i=a=b=c=1
+      dist=0.1
+      while i!=8:
+        print(i,"its I")
+        self.translationUniform.data[0]+=dist
+        i=i+1
+        time.sleep(0.3)
+      while a!=16:
+        print(a,"its I up")
+        self.translationUniform.data[1]+=dist
+        a=a+1
+        time.sleep(0.3)
+      while b!=12:
+        print(b,"its I left")
+        self.translationUniform.data[0]-=dist
+        b=b+1
+        time.sleep(0.3)
+      while c!=6:
+        print(c,"its I down")
+        self.translationUniform.data[1]-=dist
+        c=c+1
+        time.sleep(0.3)
+    self.translationUniform.uploadData()
+    #renders geometric object(s) using program
+    glDrawArrays(GL_TRIANGLES, 0, self.vertexCount)
+
+#create an instance of this class and run the program
+Test().run()
